@@ -37,7 +37,6 @@ pipeline {
 					withCredentials([usernamePassword(credentialsId: 'my-docker-hub-credential-id', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
 								// explicit login before push
 								sh """
-								echo "$DOCKER_PASSWORD" | docker login -u "DOCKER_USERNAME" --password-stdin
 								docker push ${DOCKER_IMAGE_NAME}:${IMAGE_TAG}
 								"""
 				}
